@@ -1,0 +1,82 @@
+/* Header */
+.large-header {
+	position: relative;
+	width: 100%;
+	background: #333;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+
+#large-header {
+	background-image: url('../img/landing.jpg');
+}
+
+.main-title {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	color: #f9f1e9;
+	text-align: center;
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 69px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
+
+.sub-title {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	color: #f9f1e9;
+	text-align: center;
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 19px;
+	top: 70%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
+
+.guy-title {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	color: #f9f1e9;
+	text-align: center;
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 28px;
+	top: 80%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
+
+
+.demo-1 .main-title {
+	text-transform: uppercase;
+	font-size: 64px;
+	letter-spacing: 0.1em;
+}
+
+.main-title .thin {
+	font-weight: 200;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
+
+@media only screen and (max-width : 768px) {
+	.demo-1 .main-title {
+		font-size: 3em;
+	}
+}

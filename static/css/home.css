@@ -1,0 +1,22 @@
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  font-size: 26px;
+  color: white !important;
+}
+
+.navbar {
+  background-color: #91A8D0;
+}
+
+body {
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
