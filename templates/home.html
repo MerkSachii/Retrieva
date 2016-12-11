@@ -15,7 +15,7 @@
     <link href="static/bootstrap3/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome :-) -->
     <link href="static/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="static/css/home.css?version=10" />
+    <link rel="stylesheet" href="static/css/home.css?version=22" />
     <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Montserrat" rel="stylesheet">
 
   </head>
@@ -30,42 +30,92 @@
       </div>
     </nav>
 
+    <div class="container-fluid">
+      <div class="card card-nav-tabs">
+        <div class="card-header" data-background-color="purple">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="active">
+                  <a href="#carver" data-toggle="tab">
+                    <i class="fa fa-2x fa-file-text"></i>
+                    File Carver
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#shredder" data-toggle="tab">
+                    <i class="fa fa-2x fa-eraser" aria-hidden="true"></i>
+                    Drive Shredder
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#stego" data-toggle="tab">
+                    <i class="fa fa-2x fa-unlock-alt" aria-hidden="true"></i>
+                    Encrypt/Decrypt
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    <div class="container">
-      <div class="row">
-       <div class="card col-xs-4 col-md-2">
-         <img class="img-responsive" src="static/img/drive.png" alt="Card image cap" />
-         <div class="card-block">
-             <h4 class="card-title">Retrieve from media</h4>
-             <p class="card-text">Open up one of your removable drives for retrieving your data.</p>
-             <a href="/chooseDrive/media" class="btn btn-primary">Go get 'em!</a>
-           </div>
-       </div>
-       <div class="card col-xs-4 col-md-2 col-md-offset-1">
-         <img class="img-responsive" src="static/img/image.png" alt="Card image cap" />
-         <div class="card-block">
-             <h4 class="card-title">Open an image file</h4>
-             <p class="card-text">Got an image of your media? Let's work with this.</p>
-             <a href="/chooseFile" class="btn btn-primary">Let's do this!</a>
-           </div>
-       </div>
-
-       <div class="card col-xs-4 col-md-2 col-md-offset-1">
-         <img class="img-responsive" src="static/img/backup.png" alt="Card image cap" />
-         <div class="card-block">
-             <h4 class="card-title">Backup your media</h4>
-             <p class="card-text">You'll never know if you need a soft copy of your favorite media.</p>
-             <a href="/chooseDrive/backup" class="btn btn-primary">Protect 'em now</a>
-           </div>
-       </div>
-       <div class="card col-xs-4 col-md-2 col-md-offset-1">
-         <img class="img-responsive" src="static/img/about.png" alt="Card image cap" />
-         <div class="card-block">
-             <h4 class="card-title">Know the developers</h4>
-             <p class="card-text">Questions? Suggestions? Meet your developers now!</p>
-             <a href="#" class="btn btn-primary">Set up a date</a>
-           </div>
-       </div>
+        <div class="card-content">
+          <div class="clearfix page-head">
+            <h3 class="pull-left">
+            </h3>
+            <h3 class="pull-right">
+            </h3>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="carver">
+              <div class="panel-body">
+                <div class="card col-xs-4 col-md-2">
+                  <img class="img-responsive" src="static/img/drive.png" alt="Card image cap" />
+                  <div class="card-block">
+                      <h4 class="card-title">Retrieve from media</h4>
+                      <p class="card-text">Open up one of your removable drives for retrieving your data.</p>
+                      <a href="/chooseDrive/media" class="btn btn-primary">Go get 'em!</a>
+                  </div>
+                </div>
+                <div class="card col-xs-4 col-md-2 col-md-offset-1">
+                  <img class="img-responsive" src="static/img/image.png" alt="Card image cap" />
+                  <div class="card-block">
+                      <h4 class="card-title">Open an image file</h4>
+                      <p class="card-text">Got an image of your media? Let's work with this.</p>
+                      <a href="/chooseFile" class="btn btn-primary">Let's do this!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="shredder">
+              <div class="panel-body">
+                <div class="card col-xs-4 col-md-2 col-md-offset-1">
+                  <img class="img-responsive" src="static/img/shred.png" alt="Card image cap" />
+                  <div class="card-block">
+                      <h4 class="card-title">Format your drive</h4>
+                      <p class="card-text">Shred the enemy? Just kidding, eliminate your footprints.</p>
+                      <a href="/chooseFile" class="btn btn-primary">Leave no trace!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="stego">
+              <div class="panel-body">
+                <div class="card col-xs-4 col-md-2 col-md-offset-1">
+                  <img class="img-responsive" src="static/img/stego.png" alt="Card image cap" />
+                  <div class="card-block">
+                    <h4 class="card-title">Encrypt and Decrypt</h4>
+                    <p class="card-text">Hidden messages? You've come to the right place</p>
+                    <a href="/chooseFile" class="btn btn-primary">Exchange messages!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
