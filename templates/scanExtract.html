@@ -16,6 +16,8 @@
     <!-- Font Awesome :-) -->
     <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scanExtract.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dropzone.css') }}" />
     <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Montserrat" rel="stylesheet">
 
   </head>
@@ -30,25 +32,29 @@
       </div>
     </nav>
 
-
-    <div class="container" >
-      <div class="col-lg-12" id="idButton">
-        {% for n in drive %}
-        <!-- <a href="/Retrieva/?job={{job}}&drive={{n}}" class="btn btn-sq-lg btn-primary"> -->
-        <a href="/retrievaMedia/?drive={{n}}" class="btn btn-sq-lg btn-primary">
-              <i class="fa fa-hdd-o fa-5x"></i><br>
-              {{n}} <br>Drive
-        </a>
-        {% endfor %}
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+            <h3 class="text-center">What files do you want to retrieve?</h3>
+            <div class="well" style="max-height: 300px;overflow: auto;">
+        		<ul class="list-group checked-list-box">
+                  <li class="list-group-item" data-style="button">JPEG - Picture files!</li>
+                  <li class="list-group-item" data-style="button" data-color="success">PNG - More picture files!</li>
+                  <li class="list-group-item" data-style="button" data-color="info">DOC - Your word documents</li>
+                  <li class="list-group-item" data-style="button" data-color="warning">XLS - Some excel files if you have them</li>
+                  <li class="list-group-item" data-style="button" data-color="danger">PDF - I don't know what to call them</li>
+              </ul>
+            </div>
+        </div>
       </div>
     </div>
-
   </body>
   <!-- Insert this line above script imports  -->
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
   <script src="{{ url_for('static', filename='js/jquery.js') }}" type="text/javascript"></script>
   <script src="{{ url_for('static', filename='bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/dropzone.js') }}" type="text/javascript"></script>
 
   <!-- Insert this line after script imports -->
   <script>if (window.module) module = window.module;</script>

@@ -38,17 +38,17 @@ def chooseDrive(action):
 
 @app.route("/Retrieva/", methods=['GET'])
 def Retrieva():
-    job = request.args.get('job')
-    drive = request.args.get('drive')
-
-    if job == 'media':
-        return render_template('retrievaMedia.html', drives = drive)
-
-    elif job == 'image':
-        return render_template('retrievaImage.html', drives = drive)
-
-    elif job == 'backup':
-        return render_template('retrievaBackup.html', drives = drive)
+    # job = request.args.get('job')
+    # drive = request.args.get('drive')
+    #
+    # if job == 'media':
+    #     return render_template('retrievaMedia.html', drives = drive)
+    #
+    # elif job == 'image':
+    #     return render_template('retrievaImage.html', drives = drive)
+    #
+    # elif job == 'backup':
+    #     return render_template('retrievaBackup.html', drives = drive)
 
     return render_template('home.html')
 
@@ -71,6 +71,25 @@ def retrieveFromImage():
     modules.retrieveDOC(imageData)
     modules.retrieveXLS(imageData)
     return jsonify('Success!')
+
+
+@app.route("/retrievaMedia/", methods=['GET'])
+def retrievaMedia():
+    drivers = request.args.get('drive')
+
+    return render_template("retrievaMedia.html", drive = drivers)
+
+@app.route("/scanExtract/", methods=['GET'])
+def scanExtract():
+    job = request.args.get('job')
+    driver = request.args.get('drivers')
+
+    if job == 'full':
+        modules.fullScan(driver)
+    elif job == 'slow':
+        modules.smallScan(driver)
+
+    return render_template("scanExtract.html", jobs = job, drivers = driver)
 
 if __name__ == "__main__":
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)

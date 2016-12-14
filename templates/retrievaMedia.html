@@ -30,10 +30,67 @@
       </div>
     </nav>
 
+    <div class="container-fluid">
+      <div class="card card-nav-tabs">
+        <div class="card-header" data-background-color="purple">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="active">
+                  <a href="#carver" data-toggle="tab">
+                    <i class="fa fa-2x fa-file-text"></i>
+                    Ultima™
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#shredder" data-toggle="tab">
+                    <i class="fa fa-2x fa-eraser" aria-hidden="true"></i>
+                    Pacencia™
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-    {{drives}}
-
-
+        <div class="card-content">
+          <div class="clearfix page-head">
+            <h3 class="pull-left">
+            </h3>
+            <h3 class="pull-right">
+            </h3>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="carver">
+              <div class="panel-body">
+                <div class="card col-xs-4 col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static', filename='img/drive.png') }}" alt="Card image cap" />
+                  <div class="card-block">
+                      <h4 class="card-title">Full Scan with Ultima™</h4>
+                      <p class="card-text">Reach the depths of your media with Ultima!</p>
+                      <a href="/scanExtract?job=full&drivers={{drive}}" class="btn btn-primary">Ultima!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="shredder">
+              <div class="panel-body">
+                <div class="card col-xs-4 col-md-2 col-md-offset-1">
+                  <img class="img-responsive" src="{{ url_for('static', filename='img/shred.png') }}" alt="Card image cap" />
+                  <div class="card-block">
+                      <h4 class="card-title">Do a Slow Scan with Pacencia™</h4>
+                      <p class="card-text">Wait for your files to come back with Pacencia™</p>
+                      <a href="/scanExtract?job=slow&drivers={{drive}}" class="btn btn-primary">Start it!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <!-- Insert this line above script imports  -->
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>

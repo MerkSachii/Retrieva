@@ -238,3 +238,13 @@ def buildXLSImage(xlslist):
 
 def makeDirectory():
     os.makedirs(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files'),exist_ok=True)
+
+
+# ============= Straight USB Read ==============
+
+def smallScan(driveLetter):
+    print("Small scan")
+    
+
+def fullScan(driveLetter):
+    print("Full scan")
