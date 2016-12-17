@@ -91,6 +91,17 @@ def scanExtract():
 
     return render_template("scanExtract.html", jobs = job, drivers = driver)
 
+@app.route("/doScanAndExtract", methods=['POST','GET'])
+def doScanAndExtract():
+    if request.method == 'POST':
+        jpeg = request.form.get('jpeg')
+        png = request.form.get('png')
+        doc = request.form.get('doc')
+        xls = request.form.get('xls')
+        pdf = request.form.get('pdf')
+        drive = request.form['drive']
+    return render_template("loading.html")
+
 if __name__ == "__main__":
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)
     handler.setLevel(logging.INFO)

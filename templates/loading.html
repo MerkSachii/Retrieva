@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" type="image/x-icon" href="static/img/quit.png">
+
+    <title>Retrieva</title>
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{{ url_for('static', filename='bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <!-- Font Awesome :-) -->
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Montserrat" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div id="large-header" class="large-header">
+      <canvas id="demo-canvas"></canvas>
+      <!-- <div class="container">
+        <div id="circularG">
+          <div id="circularG_1" class="circularG"></div>
+          <div id="circularG_2" class="circularG"></div>
+          <div id="circularG_3" class="circularG"></div>
+          <div id="circularG_4" class="circularG"></div>
+          <div id="circularG_5" class="circularG"></div>
+          <div id="circularG_6" class="circularG"></div>
+          <div id="circularG_7" class="circularG"></div>
+          <div id="circularG_8" class="circularG"></div>
+        </div>
+      </div> -->
+      <h1 class="main-title">RE <span class="thin"> trieving<span class="blink">.</span></span></h1>
+
+      <h5 id="quoteContainer" class="sub-title"> </h5>
+      <h6 id="geniusContainer" class="guy-title"> </h6>
+    </div>
+
+
+
+
+  </body>
+  <!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <script src="{{ url_for('static', filename='js/jquery.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='gsoc/easing/EasePack.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='gsoc/TweenLite.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/rAF.js') }}" type="text/javascript"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+  <script>
+  (function() {
+
+      var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
+
+      // Main
+      initHeader();
+      initAnimation();
+      addListeners();
+
+      function initHeader() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          target = {x: width/2, y: height/2};
+
+          largeHeader = document.getElementById('large-header');
+          largeHeader.style.height = height+'px';
+
+          canvas = document.getElementById('demo-canvas');
+          canvas.width = width;
+          canvas.height = height;
+          ctx = canvas.getContext('2d');
+
+          // create points
+          points = [];
+          for(var x = 0; x < width; x = x + width/20) {
+              for(var y = 0; y < height; y = y + height/20) {
+                  var px = x + Math.random()*width/20;
+                  var py = y + Math.random()*height/20;
+                  var p = {x: px, originX: px, y: py, originY: py };
+                  points.push(p);
+              }
+          }
+
+          // for each point find the 5 closest points
+          for(var i = 0; i < points.length; i++) {
+              var closest = [];
+              var p1 = points[i];
+              for(var j = 0; j < points.length; j++) {
+                  var p2 = points[j]
+                  if(!(p1 == p2)) {
+                      var placed = false;
+                      for(var k = 0; k < 5; k++) {
+                          if(!placed) {
+                              if(closest[k] == undefined) {
+                                  closest[k] = p2;
+                                  placed = true;
+                              }
+                          }
+                      }
+
+                      for(var k = 0; k < 5; k++) {
+                          if(!placed) {
+                              if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                                  closest[k] = p2;
+                                  placed = true;
+                              }
+                          }
+                      }
+                  }
+              }
+              p1.closest = closest;
+          }
+
+          // assign a circle to each point
+          for(var i in points) {
+              var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+              points[i].circle = c;
+          }
+      }
+
+      // Event handling
+      function addListeners() {
+          if(!('ontouchstart' in window)) {
+              window.addEventListener('mousemove', mouseMove);
+          }
+          window.addEventListener('scroll', scrollCheck);
+          window.addEventListener('resize', resize);
+      }
+
+      function mouseMove(e) {
+          var posx = posy = 0;
+          if (e.pageX || e.pageY) {
+              posx = e.pageX;
+              posy = e.pageY;
+          }
+          else if (e.clientX || e.clientY)    {
+              posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+              posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+          }
+          target.x = posx;
+          target.y = posy;
+      }
+
+      function scrollCheck() {
+          if(document.body.scrollTop > height) animateHeader = false;
+          else animateHeader = true;
+      }
+
+      function resize() {
+          width = window.innerWidth;
+          height = window.innerHeight;
+          largeHeader.style.height = height+'px';
+          canvas.width = width;
+          canvas.height = height;
+      }
+
+      // animation
+      function initAnimation() {
+          animate();
+          for(var i in points) {
+              shiftPoint(points[i]);
+          }
+      }
+
+      function animate() {
+          if(animateHeader) {
+              ctx.clearRect(0,0,width,height);
+              for(var i in points) {
+                  // detect points in range
+                  if(Math.abs(getDistance(target, points[i])) < 4000) {
+                      points[i].active = 0.3;
+                      points[i].circle.active = 0.6;
+                  } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                      points[i].active = 0.1;
+                      points[i].circle.active = 0.3;
+                  } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                      points[i].active = 0.02;
+                      points[i].circle.active = 0.1;
+                  } else {
+                      points[i].active = 0;
+                      points[i].circle.active = 0;
+                  }
+
+                  drawLines(points[i]);
+                  points[i].circle.draw();
+              }
+          }
+          requestAnimationFrame(animate);
+      }
+
+      function shiftPoint(p) {
+          TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
+              y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
+              onComplete: function() {
+                  shiftPoint(p);
+              }});
+      }
+
+      // Canvas manipulation
+      function drawLines(p) {
+          if(!p.active) return;
+          for(var i in p.closest) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p.closest[i].x, p.closest[i].y);
+              ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
+              ctx.stroke();
+          }
+      }
+
+      function Circle(pos,rad,color) {
+          var _this = this;
+
+          // constructor
+          (function() {
+              _this.pos = pos || null;
+              _this.radius = rad || null;
+              _this.color = color || null;
+          })();
+
+          this.draw = function() {
+              if(!_this.active) return;
+              ctx.beginPath();
+              ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+              ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
+              ctx.fill();
+          };
+      }
+
+      // Util
+      function getDistance(p1, p2) {
+          return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+      }
+
+  })();
+  </script>
+
+  <script>
+  $(document).ready(function(){
+		var quoteSource=[
+		{
+			quote: "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.",
+			name:"Francis of Assisi"
+	    },
+	    {
+	    	quote:"Believe you can and you're halfway there.",
+	    	name:"Theodore Roosevelt"
+	    },
+	    {
+	    	quote:"It does not matter how slowly you go as long as you do not stop.",
+	    	name:"Confucius"
+	    },
+	    {
+	    	quote:"Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.",
+	    	name:"Thomas A. Edison"
+	    },
+	    {
+	    	quote:"The will to win, the desire to succeed, the urge to reach your full potential... these are the keys that will unlock the door to personal excellence.",
+	    	name:"Confucius"
+	    },
+	    {
+	    	quote:"Don't watch the clock; do what it does. Keep going.",
+	    	name:"Sam Levenson"
+	    },
+	    {
+	    	quote:"A creative man is motivated by the desire to achieve, not by the desire to beat others.",
+	    	name:"Ayn Rand"
+	    },
+	    {
+	    	quote:"A creative man is motivated by the desire to achieve, not by the desire to beat others.",
+	    	name:"Ayn Rand"
+	    },
+	    {
+	    	quote:"Expect problems and eat them for breakfast.",
+	    	name:"Alfred A. Montapert"
+	    },
+	    {
+	    	quote:"Start where you are. Use what you have. Do what you can.",
+	    	name:"Arthur Ashe"
+	    },
+	    {
+	    	quote:"Ever tried. Ever failed. No matter. Try Again. Fail again. Fail better.",
+	    	name:"Samuel Beckett"
+	    },
+	    {
+	    	quote:"Be yourself; everyone else is already taken.",
+	    	name:"Oscar Wilde"
+	    },
+	    {
+	    	quote:"Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+	    	name:"Albert Einstein"
+	    },
+	    {
+	    	quote:"Always remember that you are absolutely unique. Just like everyone else.",
+	    	name:"Margaret Mead"
+	    },
+	    {
+	    	quote:"Do not take life too seriously. You will never get out of it alive.",
+	    	name:"Elbert Hubbard"
+	    },
+	    {
+	    	quote:"People who think they know everything are a great annoyance to those of us who do.",
+	    	name:"Isaac Asimov"
+	    },
+	    {
+	    	quote:"Procrastination is the art of keeping up with yesterday.",
+	    	name:"Don Marquis"
+	    },
+	    {
+	    	quote:"Get your facts first, then you can distort them as you please.",
+	    	name:"Mark Twain"
+	    },
+	    {
+	    	quote:"A day without sunshine is like, you know, night.",
+	    	name:"Steve Martin"
+	    },
+	    {
+	    	quote:"My grandmother started walking five miles a day when she was sixty. She's ninety-seven now, and we don't know where the hell she is.",
+	    	name:"Ellen DeGeneres"
+	    },
+	    {
+	    	quote:"Don't sweat the petty things and don't pet the sweaty things.",
+	    	name:"George Carlin"
+	    },
+	    {
+	    	quote:"Always do whatever's next.",
+	    	name:"George Carlin"
+	    },
+	    {
+	    	quote:"Atheism is a non-prophet organization.",
+	    	name:"George Carlin"
+	    },
+	    {
+	    	quote:"Hapiness is not something ready made. It comes from your own actions.",
+	    	name:"Dalai Lama"
+	    }
+
+	];
+
+		function quoteUp(){
+			//define the containers of the info we target
+			var quote = $('#quoteContainer').text();
+			var quoteGenius = $('#geniusContainer').text();
+
+			//prevent browser's default action
+
+			//getting a new random number to attach to a quote and setting a limit
+			var sourceLength = quoteSource.length;
+			var randomNumber= Math.floor(Math.random()*sourceLength);
+			//set a new quote
+			for(i=0;i<=sourceLength;i+=1){
+  			var newQuoteText = quoteSource[randomNumber].quote;
+  			var newQuoteGenius = quoteSource[randomNumber].name;
+  			//console.log(newQuoteText,newQuoteGenius);
+        var timeAnimation = 500;
+        var quoteContainer = $('#quoteContainer');
+        var geniusContainer = $('#geniusContainer');
+        //fade out animation with callback
+        quoteContainer.fadeOut(timeAnimation, function(){
+          quoteContainer.html('');
+          geniusContainer.html('');
+    			quoteContainer.append(newQuoteText);
+          geniusContainer.append(newQuoteGenius);
+
+            //fadein animation.
+          quoteContainer.fadeIn(timeAnimation);
+          geniusContainer.fadeIn(timeAnimation);
+      });
+
+			break;
+		};//end for loop
+
+	};//end quoteButton function
+
+setInterval(quoteUp, 6500)
+});//end document ready
+
+    </script>
+</html>
