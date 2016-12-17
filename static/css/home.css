@@ -12,11 +12,3 @@ body {
 
   font-family: 'Montserrat', sans-serif;
 }
-
-@font-face {
-    font-family: 'Lobster';
-    src: url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
