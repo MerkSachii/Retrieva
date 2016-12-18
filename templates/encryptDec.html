@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" type="image/x-icon" href="static/img/quit.png">
+
+    <title>Retrieva</title>
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{{ url_for('static', filename='bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <!-- Font Awesome :-) -->
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/encryptDec.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Montserrat" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Static navbar -->
+    <nav id="custombar" class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Retrieva</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="card card-nav-tabs">
+        <div class="card-header" data-background-color="purple">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="active">
+                  <a href="#caesarmin1" data-toggle="tab">
+                    <i class="fa fa-2x fa-lemon-o"></i>
+                    Caesar - 1
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#caesarmin2" data-toggle="tab">
+                    <i class="fa fa-2x fa-lemon-o" aria-hidden="true"></i>
+                    Caesar - 2
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#caesarmin3" data-toggle="tab">
+                    <i class="fa fa-2x fa-lemon-o" aria-hidden="true"></i>
+                    Caesar - 3
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#caesarplus1" data-toggle="tab">
+                    <i class="fa fa-2x fa-lemon-o" aria-hidden="true"></i>
+                    Caesar + 1
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#emoticon" data-toggle="tab">
+                    <i class="fa fa-2x fa-magnet" aria-hidden="true"></i>
+                    Emoticon
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#innovation" data-toggle="tab">
+                    <i class="fa fa-2x fa-level-up" aria-hidden="true"></i>
+                    Innovation
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#md5" data-toggle="tab">
+                    <i class="fa fa-2x fa-filter" aria-hidden="true"></i>
+                    MD5
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#sha" data-toggle="tab">
+                    <i class="fa fa-2x fa-filter" aria-hidden="true"></i>
+                    SHA-512
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <div class="clearfix page-head">
+            <h3 class="pull-left">
+            </h3>
+            <h3 class="pull-right">
+            </h3>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="caesarmin1">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Caesar - 1 Algorithm </h2>
+                </div>
+                <textarea id="cmin1Enc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="cmin1Dec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encmin1" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decmin1" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="caesarmin2">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Caesar - 2 Algorithm </h2>
+                </div>
+                <textarea id="cmin2Enc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="cmin2Dec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encmin2" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decmin2" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="caesarmin3">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Caesar - 3 Algorithm </h2>
+                </div>
+                <textarea id="cmin3Enc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="cmin3Dec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encmin3" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decmin3" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="caesarplus1">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Caesar + 1 Algorithm </h2>
+                </div>
+                <textarea id="cplus1Enc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="cplus1Dec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encplus1" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decplus1" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="emoticon">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Emoticon Algorithm </h2>
+                </div>
+                <textarea id="emoEnc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="emoDec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encemo" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decemo" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="innovation">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: Innovation Algorithm </h2>
+                </div>
+                <textarea id="innoEnc" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="innoDec" class="textarea-inline-right" placeholder="Enter text to be decrypted"></textarea>
+                <div class="container">
+                  <button id="encinno" class="btn btn-success custom-left">Encrpyt</button>
+                  <button id="decinno" class="btn btn-success custom-right">Decrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="md5">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: MD5 Algorithm </h2>
+                </div>
+                <textarea id="md5en" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="md5out" class="textarea-inline-right" placeholder="The hash will appear here" readonly></textarea>
+                <div class="container">
+                  <button id="encmd5" class="btn btn-success custom-left">Encrpyt</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="sha">
+              <div class="panel-body">
+                <div class="container">
+                  <h2> Encrypt and Decrypt: SHA-512 Algorithm </h2>
+                </div>
+                <textarea id="shaen" class="textarea-inline-left" placeholder="Enter text to be encrpyted"></textarea>
+                <div class="headerDivider"></div>
+                <textarea id="shaout" class="textarea-inline-right" placeholder="The hash will appear here" readonly></textarea>
+                <div class="container">
+                  <button id="encsha" class="btn btn-success custom-left">Encrpyt</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+  <!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <script src="{{ url_for('static', filename='js/jquery.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/caesarmin1.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/caesarmin2.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/caesarmin3.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/caesarplus1.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/emoticon.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/random.js') }}" type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='js/hash.js') }}" type="text/javascript"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+
+
+</html>

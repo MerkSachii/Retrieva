@@ -1,0 +1,33 @@
+.textarea-inline-left {
+	width: 500px;
+	height:300px;
+	border:1px solid #3366FF;
+	border-left: 8px solid #3366FF;
+  display:inline-block;
+}
+
+.textarea-inline-right {
+	width: 500px;
+	height:300px;
+	border:1px solid #3366FF;
+	border-right: 8px solid #3366FF;
+  display:inline-block;
+}
+
+.headerDivider {
+   border-left:1px solid #38546d;
+   border-right:1px solid #16222c;
+   height:300px;
+   display:inline-block;
+   margin-left: 50px;
+   margin-right: 50px
+
+}
+
+.custom-right {
+  margin-left:125px;
+}
+
+.custom-left {
+  margin-left:325px;
+}

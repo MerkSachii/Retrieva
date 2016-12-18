@@ -1,4 +1,4 @@
-Exception on /retrievaMedia/ [GET]
+Exception on /decCaesarMin3 [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +12,89 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "./hello.py", line 80, in retrievaMedia
-    return render_template("retrievaMedia.html", drive)
-TypeError: render_template() takes 1 positional argument but 2 were given
-Exception on /doScanAndExtract [POST]
+  File "hello.py", line 150, in decCaesarMin3
+    decryptedText = ed.decryptText(KeyMap, 2, plainText)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 187, in decryptText
+    plainText += ReverseKeyMapList[choice].get(encryptedText[i])
+UnboundLocalError: local variable 'plainText' referenced before assignment
+Exception on /decEmoticon [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+Exception on /decCaesarMin1 [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+Exception on /decEmoticon [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+Exception on /decCaesarMin1 [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+Exception on /encMD5 [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: '_hashlib.HASH' object is not callable
+Exception on /encMD5 [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: '_hashlib.HASH' object is not callable
+Exception on /encMD5 [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: '_hashlib.HASH' object is not callable
+Exception on /encSHA [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,52 +108,21 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "./hello.py", line 97, in doScanAndExtract
-    jpeg = request.form('jpeg')
-TypeError: 'ImmutableMultiDict' object is not callable
-Exception on /doScanAndExtract [POST]
+  File "hello.py", line 205, in encSHA
+    encryptedText = ed.sha512(plainText)
+AttributeError: module 'encryptdecrypt' has no attribute 'sha512'
+Exception on /encSHA [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "./hello.py", line 103, in doScanAndExtract
-    return render_template("retrievaImage.html", drives = drive)
-NameError: name 'drive' is not defined
-Exception on /doScanAndExtract [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "./hello.py", line 103, in doScanAndExtract
-    return render_template("retrievaImage.html", drives = drive, pdf = pdf, xls = xls, doc = doc, png = png, jpeg = jpeg)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 133, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 851, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 812, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\jinja2\environment.py", line 774, in _load_template
-    cache_key = self.loader.get_source(self, name)[1]
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 57, in get_source
-    return self._get_source_fast(environment, template)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\templating.py", line 85, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: retrievaImage.html
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1746, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 847, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\wrappers.py", line 57, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\werkzeug\test.py", line 871, in run_wsgi_app
+    app_rv = app(environ, start_response)
+TypeError: '_hashlib.HASH' object is not callable

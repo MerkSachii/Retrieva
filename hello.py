@@ -3,6 +3,7 @@ from __future__ import print_function
 from time import sleep
 import sys
 import modules
+import encryptdecrypt as ed
 import logging
 import os
 from logging.handlers import RotatingFileHandler
@@ -101,6 +102,113 @@ def doScanAndExtract():
         pdf = request.form.get('pdf')
         drive = request.form['drive']
     return render_template("loading.html")
+
+@app.route("/encryptdecrypt", methods=['POST', 'GET'])
+def encryptdecrypt():
+
+    return render_template("encryptDec.html")
+
+@app.route("/encCaesarMin1", methods=['POST'])
+def encCaesarMin1():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendKeyMapList()
+    encryptedText = ed.encryptText(KeyMap, 0, plainText)
+    return encryptedText
+
+@app.route("/decCaesarMin1", methods=['POST'])
+def decCaesarMin1():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendReverseKeyMapList()
+    decryptedText = ed.decryptText(KeyMap, 0, plainText)
+    return decryptedText
+
+@app.route("/encCaesarMin2", methods=['POST'])
+def encCaesarMin2():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendKeyMapList()
+    encryptedText = ed.encryptText(KeyMap, 1, plainText)
+    return encryptedText
+
+@app.route("/decCaesarMin2", methods=['POST'])
+def decCaesarMin2():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendReverseKeyMapList()
+    decryptedText = ed.decryptText(KeyMap, 1, plainText)
+    return decryptedText
+
+@app.route("/encCaesarMin3", methods=['POST'])
+def encCaesarMin3():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendKeyMapList()
+    encryptedText = ed.encryptText(KeyMap, 2, plainText)
+    return encryptedText
+
+@app.route("/decCaesarMin3", methods=['POST'])
+def decCaesarMin3():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendReverseKeyMapList()
+    decryptedText = ed.decryptText(KeyMap, 2, plainText)
+    return decryptedText
+
+@app.route("/encCaesarPlus1", methods=['POST'])
+def encCaesarPlus1():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendKeyMapList()
+    encryptedText = ed.encryptText(KeyMap, 3, plainText)
+    return encryptedText
+
+@app.route("/decCaesarPlus1", methods=['POST'])
+def decCaesarPlus2():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendReverseKeyMapList()
+    decryptedText = ed.decryptText(KeyMap, 3, plainText)
+    return decryptedText
+
+@app.route("/encEmoticon", methods=['POST'])
+def encEmoticon():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendKeyMapList()
+    encryptedText = ed.encryptText(KeyMap, 4, plainText)
+    print('Enc ',encryptedText)
+    return encryptedText
+
+@app.route("/decEmoticon", methods=['POST'])
+def decEmoticon():
+    plainText = request.form.get('plainText')
+    KeyMap = ed.appendReverseKeyMapList()
+    decryptedText = ed.decryptText(KeyMap, 4, plainText)
+    print('Plain ', plainText)
+    print('Dec ', decryptedText)
+    return decryptedText
+
+@app.route("/encRandom", methods=['POST'])
+def encRandom():
+    plainText = request.form.get('plainText')
+    encryptedText = ed.encryptTextRandom(plainText)
+    return encryptedText
+
+@app.route("/decRandom", methods=['POST'])
+def decRandom():
+    plainText = request.form.get('plainText')
+    decryptedText = ed.decryptTextRandom(plainText)
+    return decryptedText
+
+@app.route("/encMD5", methods=['POST'])
+def encMD5():
+    plainText = request.form.get('plainText')
+    encryptedText = ed.md5Hash(plainText)
+    return encryptedText
+
+@app.route("/encSHA", methods=['POST'])
+def encSHA():
+    plainText = request.form.get('plainText')
+    encryptedText = ed.sha512Hash(plainText)
+    return encryptedText
+
+
+
+
+
 
 if __name__ == "__main__":
     handler = RotatingFileHandler('foo.log', maxBytes=10000, backupCount=1)
