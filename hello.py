@@ -36,11 +36,11 @@ def chooseDrive(action):
 
     return render_template('chooseDrive.html', drive = drives, job = action)
 
-@app.route("/chooseDrive")
-def chooseDrive():
+@app.route("/chooseDrive2")
+def chooseDrive2():
     drives = modules.listAllDrives();
 
-    return render_template('chooseDrive.html', drive = drives)
+    return render_template('chooseDrive2.html', drive = drives)
 
 
 @app.route("/Retrieva/", methods=['GET'])
@@ -101,10 +101,10 @@ def retrievaMedia():
 
     return render_template("retrievaMedia.html", drive = drivers)
 
-@app.route("/shredMedia", methods=['GET'])
+@app.route("/shredMedia/", methods=['GET'])
 def shredMedia():
     drivers = request.args.get('drive')
-
+    print('shredMedia ', drivers)
     return render_template("shredSelect.html", drive = drivers)
 
 @app.route("/doShredMedia", methods=['POST','GET'])
@@ -115,19 +115,21 @@ def doshredMedia():
     brit = request.form.get('brit')
     schn = request.form.get('schn')
     drive = request.form['drive']
+    print('PREDRIVE', drive)
 
     if zero != None:
-
+        modules.allZero(drive)
     if one != None:
-
+        modules.allOne(drive)
     if face != None:
-
+        modules.FACEAlgorithm(drive)
     if brit != None:
-
+        modules.BritInfo5St5Enhanced(drive)
     if schn != None:
-    
+        modukes.SchneierAlgo(drive)
 
-    return render_template("loading.html", drive = drivers)
+
+    return render_template("loading.html")
 
 @app.route("/scanExtract/", methods=['GET'])
 def scanExtract():

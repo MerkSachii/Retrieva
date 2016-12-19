@@ -314,7 +314,7 @@ def smallScanJPEG(driveLetter):
         listedH = []
         listedT = []
         # JPEG Files
-        headers = re.finditer(b'\x89\x50\x4E\x47', data)
+        headers = re.finditer(b'\xff\xd8', data)
         tailers = re.finditer(b'\xff\xd9', data)
         listedH.append(list(headers))
         listedT.append(list(tailers))
@@ -568,12 +568,13 @@ def fullScan():
 
 
 def imager(driveLetter):
-    logvol = r'\\.\F:'
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
     chunk = 32768
     firstRun = True
     iterator = 1
 
-    g = os.fdopen(os.open(logvol, os.O_RDONLY | os.O_BINARY), "rb")
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
     g.seek(0)
     data = g.read(chunk)
     while data:
@@ -587,21 +588,26 @@ def imager(driveLetter):
             iterator += 1
 
 
-def allZero(logvol):
+def allZero(driveLetter):
     print('All Zero')
     # Implement the All Zero Algorithm
     # Overwriting Rounds: 1
     # Pattern: All zeroes
-    volume = '\\\\.\\PhysicalDrive1'
+    volume = r'\\.\F:'
+    vol = 'F:\\'
+    volume = volume.replace('F', driveLetter[:1])
+    vol = vol.replace('F', driveLetter[:1])
+    print('DRIVELETTER ', driveLetter)
+    print('VOL!!!!!!!!!!!!!!!!', vol)
     overwritePass = 1
     chunk = 512
     blocknum = 0
     overwriter = b'\x00'
-    volumeSizeInformation = win32api.GetDiskFreeSpaceEx('F:\\')
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
     totalSize = volumeSizeInformation[1]
     totalSector = int(totalSize/chunk)
 
-    g = os.fdopen(os.open(logvol, os.O_WRONLY | os.O_BINARY), "wb")
+    g = os.fdopen(os.open(volume, os.O_WRONLY | os.O_BINARY), "wb")
     g.seek(0)
 
     if overwritePass == 1:
@@ -621,3 +627,185 @@ def allZero(logvol):
         except:
             pass
         blocknum += 1
+
+def allOne(driveLetter):
+    print('All One')
+    # Implement the All One Algorithm
+    # Overwriting Rounds: 1
+    # Pattern: All ones
+    volume = r'\\.\F:'
+    vol = 'F:\\'
+    volume = volume.replace('F', driveLetter[:1])
+    vol = vol.replace('F', driveLetter[:1])
+    overwritePass = 1
+    chunk = 512
+    blocknum = 0
+    overwriter = b'\xFF'
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+    totalSize = volumeSizeInformation[1]
+    totalSector = int(totalSize/chunk)
+    g = os.fdopen(os.open(volume, os.O_WRONLY | os.O_BINARY), "wb")
+    if overwritePass == 1:
+        for i in range(0,chunk - 1):
+            overwriter += b'\xFF'
+    print('Is it seekable? ', g._checkSeekable())
+    g.write(overwriter)
+    for j in range(1, totalSector):
+
+        # print('chunk: ', chunk)
+        # print('blocknum', blocknum)
+
+        # g.seek(g.tell())
+
+        print('Current byte pwesto: ', g.tell())
+
+        try:
+            # g.seek(chunk * blocknum)
+            g.write(overwriter)
+        except:
+            isError = True
+            print('Hello')
+            pass
+        blocknum += 1
+        if isError:
+            isError = False
+            try:
+                g.seek(chunk * blocknum)
+            except:
+                print('WOOOORLDD!!!!')
+
+def FACEAlgorithm(driveLetter):
+    print('Face')
+    # Implement the FACE Wipe Algorithm
+    # Overwriting Rounds: 1
+    # Pattern: F A C E
+    volume = r'\\.\F:'
+    vol = 'F:\\'
+    volume = volume.replace('F', driveLetter[:1])
+    vol = vol.replace('F', driveLetter[:1])
+    overwritePass = 1
+    chunk = 512
+    blocknum = 0
+    overwriter = b'\x0F\x0A\x0C\x0E'
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+    totalSize = volumeSizeInformation[1]
+    totalSector = int(totalSize/chunk)
+
+    g = os.fdopen(os.open(volume, os.O_WRONLY | os.O_BINARY), "wb")
+    g.seek(0)
+
+    if overwritePass == 1:
+        for i in range(0,127):
+            overwriter += b'\x0F\x0A\x0C\x0E'
+    print('Is it seekable? ', g._checkSeekable())
+
+    for j in range(0, totalSector):
+
+        print(blocknum)
+        print('chunk: ', chunk)
+        print('blocknum', blocknum)
+
+        try:
+            g.seek(chunk * blocknum)
+            g.write(overwriter)
+        except:
+            pass
+        blocknum += 1
+
+def BritInfo5St5Enhanced(driveLetter):
+    print('British')
+    # British HMG Infosec Standard 5, Enhanced Standard
+    # Overwriting Rounds: 3
+    # Pattern: 	All ones, all zeros, random
+    volume = r'\\.\F:'
+    vol = 'F:\\'
+    volume = volume.replace('F', driveLetter[:1])
+    vol = vol.replace('F', driveLetter[:1])
+    overwritePass = 1
+    chunk = 512
+    blocknum = 0
+    overwriter = b'\x00'
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+    totalSize = volumeSizeInformation[1]
+    totalSector = int(totalSize/chunk)
+
+    g = os.fdopen(os.open(volume, os.O_WRONLY | os.O_BINARY), "wb")
+    g.seek(0)
+
+    if overwritePass == 1:
+        for i in range(0,511):
+            overwriter += b'\x00'
+    print('Is it seekable? ', g._checkSeekable())
+
+    for k in range(0, 2):
+        for j in range(0, totalSector):
+
+            print(blocknum)
+            print('chunk: ', chunk)
+            print('blocknum', blocknum)
+
+            try:
+                g.seek(chunk * blocknum)
+                g.write(overwriter)
+            except:
+                pass
+            blocknum += 1
+        overwritePass += 1
+        if overwritePass == 2:
+            for i in range(0,511):
+                overwriter += b'\x00'
+            g.seek(0)
+        if overwritePass == 3:
+            overwriter = os.urandom(512)
+            g.seek(0)
+def SchneierAlgo(driveLetter):
+    print('Schneier')
+    # Bruce Schneier's Algorithm
+    # Overwriting Rounds: 7
+    # Pattern: 	All ones, all zeros, pseudo-random sequence five times
+    volume = r'\\.\F:'
+    vol = 'F:\\'
+    volume = volume.replace('F', driveLetter[:1])
+    vol = vol.replace('F', driveLetter[:1])
+    overwritePass = 1
+    chunk = 512
+    blocknum = 0
+    overwriter = b'\xFF'
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+    totalSize = volumeSizeInformation[1]
+    totalSector = int(totalSize/chunk)
+
+    g = os.fdopen(os.open(volume, os.O_WRONLY | os.O_BINARY), "wb")
+    g.seek(0)
+    # lock_volume(g)
+
+    if overwritePass == 1:
+        for i in range(0,511):
+            overwriter += b'\xFF'
+    print('Is it seekable? ', g._checkSeekable())
+
+    for k in range(0, 7):
+        for j in range(0, totalSector):
+            print(overwriter)
+            print(blocknum)
+            print('Iteration: ', k)
+            print('chunk: ', chunk)
+            print('blocknum', blocknum)
+
+            g.seek(chunk * blocknum)
+            g.write(overwriter)
+            try:
+                print("Hello")
+            except:
+                pass
+            blocknum += 1
+        overwritePass += 1
+        if overwritePass == 2:
+            for i in range(0,511):
+                overwriter += b'\x00'
+            # g.seek(0)
+            blocknum = 0
+        if overwritePass >= 3:
+            overwriter = os.urandom(512)
+            blocknum = 0
+            # g.seek(0)

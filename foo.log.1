@@ -1,3 +1,54 @@
+Exception on /scanExtract/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "hello.py", line 107, in scanExtract
+    modules.smallScan(driver)
+AttributeError: module 'modules' has no attribute 'smallScan'
+Exception on /scanExtract/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "hello.py", line 107, in scanExtract
+    modules.smallScan(driver)
+AttributeError: module 'modules' has no attribute 'smallScan'
+Exception on /scanExtract/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "hello.py", line 104, in scanExtract
+    modules.fullScan(driver)
+TypeError: fullScan() takes 0 positional arguments but 1 was given
 Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
@@ -12,12 +63,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 120, in doScanAndExtract
-    modules.smallScan(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 336, in smallScan
-    with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablepic' + str(fileiter) + '.jpg', 'wb')) as fp:
-FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\nbzhu\\Desktop\\Retrieva Retrieved Files\\probablepic1.jpg\\wb'
-Exception on /doScanAndExtract [POST]
+  File "hello.py", line 134, in doScanAndExtract
+    modules.imager(driver)
+NameError: name 'driver' is not defined
+Exception on /doShredMedia [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -31,12 +80,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 120, in doScanAndExtract
-    modules.smallScan(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 330, in smallScan
-    tailTup = listedT[0][n].span()
-IndexError: list index out of range
-Exception on /doScanAndExtract [POST]
+  File "hello.py", line 120, in doshredMedia
+    modules.allZero(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 604, in allZero
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
+Exception on /doShredMedia [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -50,24 +99,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 127, in doScanAndExtract
-    modules.smallScanXLS(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
-    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10\x00\x00', data)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
-    return _compile(pattern, flags).finditer(string)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
-    p = sre_compile.compile(pattern, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
-    p = sre_parse.parse(p, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
-    p = _parse_sub(source, pattern, 0)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
-    itemsappend(_parse(source, state))
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
-    source.tell() - start)
-sre_constants.error: missing ), unterminated subpattern at position 0
-Exception on /doScanAndExtract [POST]
+  File "hello.py", line 120, in doshredMedia
+    modules.allZero(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 605, in allZero
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
+Exception on /doShredMedia [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -81,51 +118,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 127, in doScanAndExtract
-    modules.smallScanXLS(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
-    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10\x00\x00', data)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
-    return _compile(pattern, flags).finditer(string)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
-    p = sre_compile.compile(pattern, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
-    p = sre_parse.parse(p, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
-    p = _parse_sub(source, pattern, 0)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
-    itemsappend(_parse(source, state))
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
-    source.tell() - start)
-sre_constants.error: missing ), unterminated subpattern at position 0
-Exception on /doScanAndExtract [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 127, in doScanAndExtract
-    modules.smallScanXLS(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
-    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10', data)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
-    return _compile(pattern, flags).finditer(string)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
-    p = sre_compile.compile(pattern, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
-    p = sre_parse.parse(p, flags)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
-    p = _parse_sub(source, pattern, 0)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
-    itemsappend(_parse(source, state))
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
-    source.tell() - start)
-sre_constants.error: missing ), unterminated subpattern at position 0
+  File "hello.py", line 120, in doshredMedia
+    modules.allZero(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 606, in allZero
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
+pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')

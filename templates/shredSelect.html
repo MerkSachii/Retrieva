@@ -40,7 +40,7 @@
         </a>
         </dt>
 
-        <form action="/doScanAndExtract" method="POST" enctype="multipart/form-data">
+        <form action="/doShredMedia" method="POST" enctype="multipart/form-data">
         <dd>
           <div class="mutliSelect">
               <ul>
@@ -57,7 +57,7 @@
               </ul>
             </div>
         </dd>
-        <input type="hidden" value="{{drivers}}" name="drive" />
+        <input type="hidden" value="{{drive}}" name="drive" />
         <button type="submit" id="scanButton">Scan Now!</button>
       </form>
     </dl>
