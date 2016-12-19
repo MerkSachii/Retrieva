@@ -1,6 +1,7 @@
 const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const {dialog} = require('electron').remote
 // const options = {extraHeaders: 'pragma: no-cache\n'}
 // Report crashes to our server.
 
@@ -22,6 +23,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // call python?
   var subpy = require('child_process').spawn('python', ['./hello.py']);
+  
 
   var rq = require('request-promise');
   var mainAddr = 'http://localhost:5000';
@@ -35,7 +37,7 @@ app.on('ready', function() {
     mainWindow.loadURL(mainAddr);
     const ses = mainWindow.webContents.session.clearCache(function() {
     });
-    
+
     // Open the devtools.
     // mainWindow.webContents.openDevTools();
     // Emitted when the window is closed.

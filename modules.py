@@ -27,6 +27,12 @@ def retrieveJPEG(data):
     jpeglist = buildJPEGList(jpegheaders, jpegtailers, data)
     buildJPEGImage(jpeglist)
 
+def retrievePDF(data):
+    # ########## JPEG ########### #
+    pdfheaders = getPDFHeader(data)
+    pdftailers = getPDFTrailer(data)
+    pdflist = buildPDFList(pdfheaders, pdftailers, data)
+    buildPDFImage(pdflist)
 
 
 def retrievePNG(data):
@@ -60,6 +66,14 @@ def buildJPEGList(headers, tailers, data):
         jpeglist.append(data[headers[i].start(0):tailers[i].start(0) + 2])
 
     return jpeglist
+
+def buildPDFList(headers, tailers, data):
+    pdflist = []
+
+    for i in range(0, len(headers)):
+        pdflist.append(data[headers[i].start(0):tailers[i].start(0) + 2])
+
+    return pdflist
 
 
 def buildPNGList(headers, tailers, data):
@@ -111,6 +125,29 @@ def getJPEGTrailer(data):
 
     return listed
 
+def getPDFHeader(data):
+
+    headers = re.finditer(b'\x25\x50\x44\x46', data)
+    listed = list(headers)
+    iterator = 0
+    for m in listed:
+        iterator += 1
+    print('Number of JPEG headers found: ', iterator)
+
+    return listed
+
+
+def getPDFTrailer(data):
+
+    tailers = re.finditer(b'\x45\x4F\x46', data)
+    listed = list(tailers)
+    iterator = 0
+    for m in listed:
+        iterator += 1
+    print('Number of JPEG footers found: ', iterator)
+
+    return listed
+
     # ##### GET PNG HEADER & TRAILER ######
 
 
@@ -143,7 +180,7 @@ def getPNGTrailer(data):
 
 def getDOCHeader(data):
                            ##CHANGE THIS CODE##
-    headers = re.finditer(b'\x89\x50\x4E\x47', data)
+    headers = re.finditer(b'\xD0\xCF\x11\xE0', data)
     listed = list(headers)
     iterator = 0
     for m in listed:
@@ -155,7 +192,7 @@ def getDOCHeader(data):
 
 def getDOCTrailer(data):
                             ##CHANGE THIS CODE##
-    tailers = re.finditer(b'\x49\x45\x4E\x44\xAE\x42\x60\x82', data)
+    tailers = re.finditer(b'\xF4\x39\xB2\x71', data)
     listed = list(tailers)
     iterator = 0
     for m in listed:
@@ -171,7 +208,7 @@ def getDOCTrailer(data):
 
 def getXLSHeader(data):
                            ##CHANGE THIS CODE##
-    headers = re.finditer(b'\x89\x50\x4E\x47', data)
+    headers = re.finditer(b'\xD0\xCF\x11\xE0', data)
     listed = list(headers)
     iterator = 0
     for m in listed:
@@ -183,7 +220,7 @@ def getXLSHeader(data):
 
 def getXLSTrailer(data):
                             ##CHANGE THIS CODE##
-    tailers = re.finditer(b'\x49\x45\x4E\x44\xAE\x42\x60\x82', data)
+    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10', data)
     listed = list(tailers)
     iterator = 0
     for m in listed:
@@ -202,6 +239,15 @@ def buildJPEGImage(jpeglist):
     else:
         print("No JPEG files recovered.")
 
+def buildPDFImage(pdflist):
+    iterator = 0
+    if len(pdflist) > 0:
+        for i in pdflist:
+            with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'PDFFILE' + str(iterator) + '.pdf'), "wb") as f:
+                f.write(i)
+                iterator += 1
+    else:
+        print("No PDF files recovered.")
 
 def buildPNGImage(pnglist):
     iterator = 0
@@ -242,9 +288,336 @@ def makeDirectory():
 
 # ============= Straight USB Read ==============
 
-def smallScan(driveLetter):
+def smallScanJPEG(driveLetter):
     print("Small scan")
-    
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
+    chunk = 1048576
+    iterator = 1
+    listed = []
+    listedH = []
+    listedT = []
+    fileList = []
+    fileiter = 1
+    bytes = 0
 
-def fullScan(driveLetter):
+    firstRun = True
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        listed = []
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+        iterNo = 1
+        listedH = []
+        listedT = []
+        # JPEG Files
+        headers = re.finditer(b'\x89\x50\x4E\x47', data)
+        tailers = re.finditer(b'\xff\xd9', data)
+        listedH.append(list(headers))
+        listedT.append(list(tailers))
+        listedH = list(filter(None, listedH))
+        listedT = list(filter(None, listedT))
+
+        if len(listedH) != 0 and len(listedT) != 0:
+            for m in range(0, len(listedH)):
+                for n in range(0, len(listedH[m])):
+                    # print('H: ', data[listedH[m][n].start()])
+                    # print('T: ', data[listedT[0][n].start()])
+                    try:
+                        headTup = listedH[m][n].span()
+                        tailTup = listedT[0][n].span()
+                        for l in range(0, len(listedT[0])):
+                            fileList.append(data[listedH[m][n].start():listedT[0][l].start()])
+                    except:
+                        pass
+        fileList = list(filter(None, fileList))
+        if len(fileList) != 0:
+            for k in fileList:
+                with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablepic' + str(fileiter) + '.jpg'), 'wb') as fp:
+                    fp.write(k)
+                fileiter += 1
+                print('JPEGNUMBER ', fileiter)
+        iterator += 1
+        fileList = []
+
+def smallScanPNG(driveLetter):
+    print("Small scan")
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
+    chunk = 1048576
+    iterator = 1
+    listed = []
+    listedH = []
+    listedT = []
+    fileList = []
+    fileiter = 1
+    bytes = 0
+
+    firstRun = True
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        listed = []
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+        iterNo = 1
+        listedH = []
+        listedT = []
+        # JPEG Files
+        headers = re.finditer(b'\x89\x50\x4E\x47', data)
+        tailers = re.finditer(b'\x49\x45\x4E\x44\xAE\x42\x60\x82', data)
+        listedH.append(list(headers))
+        listedT.append(list(tailers))
+        listedH = list(filter(None, listedH))
+        listedT = list(filter(None, listedT))
+
+        if len(listedH) != 0 and len(listedT) != 0:
+            for m in range(0, len(listedH)):
+                for n in range(0, len(listedH[m])):
+                    # print('H: ', data[listedH[m][n].start()])
+                    # print('T: ', data[listedT[0][n].start()])
+                    try:
+                        headTup = listedH[m][n].span()
+                        tailTup = listedT[0][n].span()
+                        for l in range(0, len(listedT[0])):
+                            fileList.append(data[listedH[m][n].start():listedT[0][l].start()])
+                    except:
+                        pass
+        fileList = list(filter(None, fileList))
+        if len(fileList) != 0:
+            for k in fileList:
+                with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablepng' + str(fileiter) + '.png'), 'wb') as fp:
+                    fp.write(k)
+                fileiter += 1
+                print('PNGNUMBER ', fileiter)
+        iterator += 1
+        fileList = []
+
+def smallScanDOC(driveLetter):
+    print("Small scan")
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
+    chunk = 1048576
+    iterator = 1
+    listed = []
+    listedH = []
+    listedT = []
+    fileList = []
+    fileiter = 1
+    bytes = 0
+
+    firstRun = True
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        listed = []
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+        iterNo = 1
+        listedH = []
+        listedT = []
+        # JPEG Files
+        headers = re.finditer(b'\xD0\xCF\x11\xE0', data)
+        tailers = re.finditer(b'\xF4\x39\xB2\x71', data)
+        listedH.append(list(headers))
+        listedT.append(list(tailers))
+        listedH = list(filter(None, listedH))
+        listedT = list(filter(None, listedT))
+
+        if len(listedH) != 0 and len(listedT) != 0:
+            for m in range(0, len(listedH)):
+                for n in range(0, len(listedH[m])):
+                    # print('H: ', data[listedH[m][n].start()])
+                    # print('T: ', data[listedT[0][n].start()])
+                    try:
+                        headTup = listedH[m][n].span()
+                        tailTup = listedT[0][n].span()
+                        for l in range(0, len(listedT[0])):
+                            fileList.append(data[listedH[m][n].start():listedT[0][l].start()])
+                    except:
+                        pass
+        fileList = list(filter(None, fileList))
+        if len(fileList) != 0:
+            for k in fileList:
+                with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probabledoc' + str(fileiter) + '.doc'), 'wb') as fp:
+                    fp.write(k)
+                fileiter += 1
+                print('DOCNUMBER ', fileiter)
+        iterator += 1
+        fileList = []
+
+def smallScanXLS(driveLetter):
+    print("Small scan")
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
+    chunk = 1048576
+    iterator = 1
+    listed = []
+    listedH = []
+    listedT = []
+    fileList = []
+    fileiter = 1
+    bytes = 0
+
+    firstRun = True
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        listed = []
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+        iterNo = 1
+        listedH = []
+        listedT = []
+        # JPEG Files
+        headers = re.finditer(b'\xD0\xCF\x11\xE0', data)
+        tailers = re.finditer(b'\x00\x00\x00\x00\x10', data)
+        listedH.append(list(headers))
+        listedT.append(list(tailers))
+        listedH = list(filter(None, listedH))
+        listedT = list(filter(None, listedT))
+
+        if len(listedH) != 0 and len(listedT) != 0:
+            for m in range(0, len(listedH)):
+                for n in range(0, len(listedH[m])):
+                    # print('H: ', data[listedH[m][n].start()])
+                    # print('T: ', data[listedT[0][n].start()])
+                    try:
+                        headTup = listedH[m][n].span()
+                        tailTup = listedT[0][n].span()
+                        for l in range(0, len(listedT[0])):
+                            fileList.append(data[listedH[m][n].start():listedT[0][l].start()])
+                    except:
+                        pass
+        fileList = list(filter(None, fileList))
+        if len(fileList) != 0:
+            for k in fileList:
+                with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablexls' + str(fileiter) + '.xls'), 'wb') as fp:
+                    fp.write(k)
+                fileiter += 1
+                print('XLSNUMBER ', fileiter)
+        iterator += 1
+        fileList = []
+
+def smallScanPDF(driveLetter):
+    print("Small scan")
+    volume = r'\\.\F:'
+    volume = volume.replace('F', driveLetter[:1])
+    chunk = 1048576
+    iterator = 1
+    listed = []
+    listedH = []
+    listedT = []
+    fileList = []
+    fileiter = 1
+    bytes = 0
+
+    firstRun = True
+    g = os.fdopen(os.open(volume, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        listed = []
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+        iterNo = 1
+        listedH = []
+        listedT = []
+        # JPEG Files
+        headers = re.finditer(b'\x25\x50\x44\x46', data)
+        tailers = re.finditer(b'\x45\x4F\x46', data)
+        listedH.append(list(headers))
+        listedT.append(list(tailers))
+        listedH = list(filter(None, listedH))
+        listedT = list(filter(None, listedT))
+
+        if len(listedH) != 0 and len(listedT) != 0:
+            for m in range(0, len(listedH)):
+                for n in range(0, len(listedH[m])):
+                    # print('H: ', data[listedH[m][n].start()])
+                    # print('T: ', data[listedT[0][n].start()])
+                    try:
+                        headTup = listedH[m][n].span()
+                        tailTup = listedT[0][n].span()
+                        for l in range(0, len(listedT[0])):
+                            fileList.append(data[listedH[m][n].start():listedT[0][l].start()])
+                    except:
+                        pass
+        fileList = list(filter(None, fileList))
+        if len(fileList) != 0:
+            for k in fileList:
+                with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablepdf' + str(fileiter) + '.pdf'), 'wb') as fp:
+                    fp.write(k)
+                fileiter += 1
+                print('PDFNUMBER ', fileiter)
+        iterator += 1
+        fileList = []
+
+def fullScan():
     print("Full scan")
+
+
+def imager(driveLetter):
+    logvol = r'\\.\F:'
+    chunk = 32768
+    firstRun = True
+    iterator = 1
+
+    g = os.fdopen(os.open(logvol, os.O_RDONLY | os.O_BINARY), "rb")
+    g.seek(0)
+    data = g.read(chunk)
+    while data:
+        if not firstRun:
+            data = g.read(chunk)
+        firstRun = False
+
+        with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'tempImage.raw'), 'ab+') as file:
+            file.write(data)
+            print('Bytes: ', chunk * iterator)
+            iterator += 1
+
+
+def allZero(logvol):
+    print('All Zero')
+    # Implement the All Zero Algorithm
+    # Overwriting Rounds: 1
+    # Pattern: All zeroes
+    volume = '\\\\.\\PhysicalDrive1'
+    overwritePass = 1
+    chunk = 512
+    blocknum = 0
+    overwriter = b'\x00'
+    volumeSizeInformation = win32api.GetDiskFreeSpaceEx('F:\\')
+    totalSize = volumeSizeInformation[1]
+    totalSector = int(totalSize/chunk)
+
+    g = os.fdopen(os.open(logvol, os.O_WRONLY | os.O_BINARY), "wb")
+    g.seek(0)
+
+    if overwritePass == 1:
+        for i in range(0,512):
+            overwriter += b'\x00'
+    print('Is it seekable? ', g._checkSeekable())
+
+    for j in range(0, totalSector):
+
+        print(blocknum)
+        print('chunk: ', chunk)
+        print('blocknum', blocknum)
+
+        try:
+            g.seek(chunk * blocknum)
+            g.write(overwriter)
+        except:
+            pass
+        blocknum += 1

@@ -36,6 +36,12 @@ def chooseDrive(action):
 
     return render_template('chooseDrive.html', drive = drives, job = action)
 
+@app.route("/chooseDrive")
+def chooseDrive():
+    drives = modules.listAllDrives();
+
+    return render_template('chooseDrive.html', drive = drives)
+
 
 @app.route("/Retrieva/", methods=['GET'])
 def Retrieva():
@@ -58,20 +64,35 @@ def chooseFile():
 
     return render_template('chooseFile.html')
 
-@app.route("/retrieveFromImage", methods=['GET'])
+@app.route("/retrieveFromImage", methods=['POST'])
 def retrieveFromImage():
 
-    file_path = request.args['path']
+    file_path = request.form.get('path')
+    # if_jpeg = request.form.get('jpeg')
+    # if_png = request.form.get('png')
+    # if_doc = request.form.get('doc')
+    # if_xls = request.form.get('xls')
+    # if_pdf = request.form.get('pdf')
     file_path = file_path.encode('unicode-escape')
     modules.makeDirectory()
 
     imageData = modules.openDataFile(file_path)
-
     modules.retrieveJPEG(imageData)
     modules.retrievePNG(imageData)
     modules.retrieveDOC(imageData)
     modules.retrieveXLS(imageData)
-    return jsonify('Success!')
+    modules.retrievePDF(imageData)
+    # if if_jpeg != None:
+    #     modules.retrieveJPEG(imageData)
+    # if if_png != None:
+    #     modules.retrievePNG(imageData)
+    # if if_doc != None:
+    #     modules.retrieveDOC(imageData)
+    # if if_xls != None:
+    #     modules.retrieveXLS(imageData)
+    # if if_pdf != None:
+    #     modules.retrievePDF(imageData)
+    return render_template("loading.html")
 
 
 @app.route("/retrievaMedia/", methods=['GET'])
@@ -80,15 +101,43 @@ def retrievaMedia():
 
     return render_template("retrievaMedia.html", drive = drivers)
 
+@app.route("/shredMedia", methods=['GET'])
+def shredMedia():
+    drivers = request.args.get('drive')
+
+    return render_template("shredSelect.html", drive = drivers)
+
+@app.route("/doShredMedia", methods=['POST','GET'])
+def doshredMedia():
+    zero = request.form.get('zero')
+    one = request.form.get('one')
+    face = request.form.get('face')
+    brit = request.form.get('brit')
+    schn = request.form.get('schn')
+    drive = request.form['drive']
+
+    if zero != None:
+
+    if one != None:
+
+    if face != None:
+
+    if brit != None:
+
+    if schn != None:
+    
+
+    return render_template("loading.html", drive = drivers)
+
 @app.route("/scanExtract/", methods=['GET'])
 def scanExtract():
     job = request.args.get('job')
     driver = request.args.get('drivers')
 
-    if job == 'full':
-        modules.fullScan(driver)
-    elif job == 'slow':
-        modules.smallScan(driver)
+    # if job == 'full':
+    #     modules.fullScan(driver)
+    # elif job == 'slow':
+    #     modules.smallScan(driver)
 
     return render_template("scanExtract.html", jobs = job, drivers = driver)
 
@@ -101,7 +150,35 @@ def doScanAndExtract():
         xls = request.form.get('xls')
         pdf = request.form.get('pdf')
         drive = request.form['drive']
-    return render_template("loading.html")
+        job = request.form['job']
+    modules.makeDirectory()
+    if job == 'full':
+        if jpeg != None:
+            modules.smallScanJPEG(drive)
+        if png != None:
+            modules.smallScanPNG(drive)
+        if doc != None:
+            modules.smallScanDOC(drive)
+        if xls != None:
+            modules.smallScanXLS(drive)
+        if pdf != None:
+            modules.smallScanPDF(drive)
+        return render_template("loading.html")
+    if job == "slow":
+        modules.imager(drive)
+        imageData = os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'tempImage.raw')
+        if jpeg != None:
+            modules.retrieveJPEG(imageData)
+        if png != None:
+            modules.retrievePNG(imageData)
+        if doc != None:
+            modules.retrieveDOC(imageData)
+        if xls != None:
+            modules.retrieveXLS(imageData)
+        if pdf != None:
+            modules.retrievePDF(imageData)
+        return render_template("loading.html")
+
 
 @app.route("/encryptdecrypt", methods=['POST', 'GET'])
 def encryptdecrypt():

@@ -1,4 +1,4 @@
-Exception on /encCaesarMin1 [POST]
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,12 +12,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 116, in encCaesarMin1
-    encryptedText = ed.encryptText(KeyMap, 0, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 138, in encryptText
-    if plainText[i] in KeyMapList[choice]:  # if key exists with dictionary
-TypeError: 'function' object is not subscriptable
-Exception on /encCaesarMin1 [POST]
+  File "hello.py", line 120, in doScanAndExtract
+    modules.smallScan(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 336, in smallScan
+    with open(os.path.join(os.path.expanduser('~'),'Desktop\\Retrieva Retrieved Files', 'probablepic' + str(fileiter) + '.jpg', 'wb')) as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\nbzhu\\Desktop\\Retrieva Retrieved Files\\probablepic1.jpg\\wb'
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -31,12 +31,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 116, in encCaesarMin1
-    encryptedText = ed.encryptText(KeyMap, 0, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 140, in encryptText
-    if plainText[i] in KeyMapList[choice]:  # if key exists with dictionary
-TypeError: 'function' object is not subscriptable
-Exception on /encCaesarMin1 [POST]
+  File "hello.py", line 120, in doScanAndExtract
+    modules.smallScan(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 330, in smallScan
+    tailTup = listedT[0][n].span()
+IndexError: list index out of range
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -50,12 +50,24 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 116, in encCaesarMin1
-    encryptedText = ed.encryptText(KeyMap, 0, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 139, in encryptText
-    if plainText[i] in KeyMapList[choice]:  # if key exists with dictionary
-TypeError: 'function' object is not subscriptable
-Exception on /decCaesarMin1 [POST]
+  File "hello.py", line 127, in doScanAndExtract
+    modules.smallScanXLS(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
+    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10\x00\x00', data)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
+    return _compile(pattern, flags).finditer(string)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
+    source.tell() - start)
+sre_constants.error: missing ), unterminated subpattern at position 0
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,10 +81,24 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 123, in decCaesarMin1
-    return decryptedText
-NameError: name 'decryptedText' is not defined
-Exception on /decCaesarMin1 [POST]
+  File "hello.py", line 127, in doScanAndExtract
+    modules.smallScanXLS(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
+    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10\x00\x00', data)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
+    return _compile(pattern, flags).finditer(string)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
+    source.tell() - start)
+sre_constants.error: missing ), unterminated subpattern at position 0
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -86,46 +112,20 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 122, in decCaesarMin1
-    decryptedText = ed.decryptText(KeyMap, 0, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 184, in decryptText
-    while i < len(encryptedText):
-NameError: name 'encryptedText' is not defined
-Exception on /decCaesarMin2 [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 136, in decCaesarMin2
-    decryptedText = ed.decryptText(KeyMap, 1, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 184, in decryptText
-    while i < len(encryptedText):
-NameError: name 'encryptedText' is not defined
-Exception on /decCaesarMin2 [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 136, in decCaesarMin2
-    decryptedText = ed.decryptText(KeyMap, 1, plainText)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\encryptdecrypt.py", line 184, in decryptText
-    while i < len(encryptedText):
-NameError: name 'encryptedText' is not defined
+  File "hello.py", line 127, in doScanAndExtract
+    modules.smallScanXLS(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 483, in smallScanXLS
+    tailers = re.finditer(b'\x28\x00\x00\x00\x00\x10', data)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
+    return _compile(pattern, flags).finditer(string)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 293, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_compile.py", line 536, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 829, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 437, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\sre_parse.py", line 781, in _parse
+    source.tell() - start)
+sre_constants.error: missing ), unterminated subpattern at position 0
