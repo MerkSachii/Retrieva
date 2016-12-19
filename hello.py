@@ -126,7 +126,7 @@ def doshredMedia():
     if brit != None:
         modules.BritInfo5St5Enhanced(drive)
     if schn != None:
-        modukes.SchneierAlgo(drive)
+        modules.SchneierAlgo(drive)
 
 
     return render_template("loading.html")

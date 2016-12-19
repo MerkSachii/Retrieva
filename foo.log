@@ -1,4 +1,4 @@
-Exception on /doShredMedia [POST]
+Exception on /doScanAndExtract [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,85 +12,15 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 120, in doshredMedia
-    modules.allZero(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 606, in allZero
-    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
-pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
-Exception on /doShredMedia [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 121, in doshredMedia
-    modules.allZero(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 606, in allZero
-    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
-pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
-Exception on /doShredMedia [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 121, in doshredMedia
-    modules.allZero(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 606, in allZero
-    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
-pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
-Exception on /doShredMedia [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 121, in doshredMedia
-    modules.allZero(drive)
-  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 606, in allZero
-    volumeSizeInformation = win32api.GetDiskFreeSpaceEx(vol)
-pywintypes.error: (123, 'GetDiskSpaceFreeEx', 'The filename, directory name, or volume label syntax is incorrect.')
-Exception on /doShredMedia [POST]
-Traceback (most recent call last):
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "hello.py", line 132, in doshredMedia
-    return render_template("loading.html", drive = drivers)
-NameError: name 'drivers' is not defined
+  File "hello.py", line 181, in doScanAndExtract
+    modules.retrievePDF(imageData)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 32, in retrievePDF
+    pdfheaders = getPDFHeader(data)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 130, in getPDFHeader
+    headers = re.finditer(b'\x25\x50\x44\x46', data)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
+    return _compile(pattern, flags).finditer(string)
+TypeError: cannot use a bytes pattern on a string-like object
 Exception on /retrieveFromImage [POST]
 Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
@@ -114,3 +44,39 @@ Traceback (most recent call last):
   File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\re.py", line 220, in finditer
     return _compile(pattern, flags).finditer(string)
 TypeError: expected string or bytes-like object
+Exception on /doShredMedia [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "hello.py", line 129, in doshredMedia
+    modukes.SchneierAlgo(drive)
+NameError: name 'modukes' is not defined
+Exception on /doShredMedia [POST]
+Traceback (most recent call last):
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nbzhu\AppData\Local\Programs\Python\Python35-32\lib\site-packages\flask\app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "hello.py", line 129, in doshredMedia
+    modules.SchneierAlgo(drive)
+  File "C:\Users\nbzhu\Desktop\Retrieva-production\Retrieva\modules.py", line 795, in SchneierAlgo
+    g.seek(chunk * blocknum)
+OSError: [Errno 9] Bad file descriptor
